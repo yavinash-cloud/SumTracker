@@ -8,8 +8,11 @@ type ListProductApi = {
 
 const listProducts = (args?: ListProductApi) => {
   let url = config.BACKEND_BASE + PRODUCT.LIST;
-  console.log(url);
-  return axios.get(url);
+
+  let query = args?.query || {};
+  return axios.get(url, {
+    params: query,
+  });
 };
 
 export { listProducts };

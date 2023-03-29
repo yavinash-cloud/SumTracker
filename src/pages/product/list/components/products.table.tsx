@@ -4,7 +4,8 @@ import { FC, useEffect, useState } from "react";
 import Product from "../../../../components/content/product.content";
 
 interface ProductTable {
-    list: any[]
+    list: any[];
+    loading?: boolean;
 }
 
 type TableRecord = {
@@ -17,7 +18,7 @@ type TableRecord = {
 
 }
 
-const ProductsTable: FC<ProductTable> = ({ list }) => {
+const ProductsTable: FC<ProductTable> = ({ list, loading }) => {
 
     const [dataSource, setDataSource] = useState<TableRecord[]>([]);
 
@@ -71,6 +72,7 @@ const ProductsTable: FC<ProductTable> = ({ list }) => {
             columns={columns}
             dataSource={dataSource}
             pagination={false}
+            loading={loading}
         />
     )
 }

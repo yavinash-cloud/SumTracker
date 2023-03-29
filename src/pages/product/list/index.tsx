@@ -1,8 +1,9 @@
-import { Button, Space, Table } from "antd";
 import { FC, useEffect, useState } from "react";
 import Heading from "../../../components/heading/basic.heading";
 import Pagination from "../../../components/pagination/basic.pagination";
+import { UrlType } from "../../../interface/common";
 import { listProducts } from "../../../services/products";
+import { getQueryFromUrl } from "../../../utils/common.utils";
 import ProductsTable from "./components/products.table";
 
 
@@ -11,14 +12,15 @@ const fixedListParams = {
 }
 
 type PaginateType = {
-    next: string | null,
-    prev: string | null,
+    next: UrlType,
+    prev: UrlType,
     count: number | null,
 }
 
 const ProductList: FC = () => {
 
     const [products, setProducts] = useState<any[]>([]);
+    const [loading, setLoding] = useState<boolean>(false);
     const [pagination, setPagination] = useState<PaginateType>({
         next: null,
         prev: null,
@@ -30,29 +32,46 @@ const ProductList: FC = () => {
     }, []);
 
     const init = async () => {
+        loadProducts();
+    }
+
+    const loadProducts = async (queryParams?: Record<string, any>) => {
+        let query = queryParams || {};
+        setLoding(true);
         try {
             const res = await listProducts({
-                query: { ...fixedListParams }
+                query: { ...fixedListParams, ...query }
             });
 
             setProducts(res.data.results);
+            console.log(res.data.results);
             setPagination({
                 next: res.data.next,
-                prev: res.data.prev,
+                prev: res.data.previous,
                 count: res.data.count
             });
 
         } catch (err) {
             console.log(err);
         }
+        setLoding(false);
     }
 
-    const handleNext = () => {
-
+    const handleNext = (next: UrlType) => {
+        if (next === null) {
+            return;
+        }
+        let query = getQueryFromUrl(next);
+        console.log('handleNext', query);
+        loadProducts(query);
     }
 
-    const handlePrev = () => {
-
+    const handlePrev = (prev: UrlType) => {
+        if (prev === null) {
+            return;
+        }
+        let query = getQueryFromUrl(prev);
+        loadProducts(query);
     }
     return (
         <>
@@ -80,6 +99,7 @@ const ProductList: FC = () => {
                 <div style={{ marginBottom: '1rem' }}>
                     <ProductsTable
                         list={products}
+                        loading={loading}
                     />
                 </div>
                 <div>

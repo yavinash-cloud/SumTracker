@@ -1,9 +1,9 @@
 import { Button, Space } from "antd";
 import { FC } from "react";
+import { UrlType } from "../../interface/common";
 
 
 
-type UrlType = string | null;
 interface PaginationProps {
     next: UrlType;
     prev: UrlType;
