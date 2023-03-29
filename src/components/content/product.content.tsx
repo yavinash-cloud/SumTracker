@@ -88,38 +88,4 @@ export const NameSkuContent: FC<NameSkuContentInterface> = ({
     );
 };
 
-// interface LinkNodeProps {
-//     to: {
-//         pathname: string;
-//         search?: string;
-//     };
-//     from?: LinkDataType;
-//     tabIndex?: number;
-//     text: string;
-// }
-
-// const LinkNode: FC<LinkNodeProps> = ({ to, from, tabIndex, text }) => {
-//   let state: Record<string, any> | undefined;
-
-//   if (from) {
-//     state = {
-//       from: from.pathname,
-//       searchParams: from.search,
-//     };
-//   }
-
-//   return (
-//     <Link
-//       tabIndex={tabIndex}
-//       to={{
-//         pathname: to.pathname,
-//         search: to.search,
-//         state: state,
-//       }}
-//     >
-//       {text}
-//     </Link>
-//   );
-// };
-
 export default Product;

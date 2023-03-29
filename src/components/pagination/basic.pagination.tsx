@@ -1,9 +1,9 @@
 import { Button, Space } from "antd";
 import { FC } from "react";
-import { PaginationUIProps, UrlType } from "../../interface/common";
+import { PaginationUIInterface, UrlType } from "../../interface/common";
 
 
-const Pagination: FC<PaginationUIProps> = ({ next, prev, onNextClick, onPrevClick }) => {
+const Pagination: FC<PaginationUIInterface> = ({ next, prev, onNextClick, onPrevClick }) => {
 
     const handlePrev = () => {
         onPrevClick?.(prev);

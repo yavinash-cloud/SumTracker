@@ -1,13 +1,13 @@
 export type UrlType = string | null;
 
-interface PaginationUIProps {
+interface PaginationUIInterface {
   next: UrlType;
   prev: UrlType;
   onPrevClick?: (prev: UrlType) => void;
   onNextClick?: (next: UrlType) => void;
 }
 
-interface ResultStringProps {
+interface ResultStringInterface {
   pagination: PaginateDataType;
   loading: boolean;
   pageString?: string;

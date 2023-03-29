@@ -1,7 +1,7 @@
 import { Typography } from 'antd';
 import { FC } from 'react';
 import { PAGINATION_LIMIT } from '../../constants/app.constants';
-import { PaginateDataType, ResultStringProps } from '../../interface/common';
+import { PaginateDataType, ResultStringInterface } from '../../interface/common';
 import { pluralize } from '../../utils/common.utils';
 
 const defaultPagination: Partial<PaginateDataType> = {
@@ -9,12 +9,11 @@ const defaultPagination: Partial<PaginateDataType> = {
     hasOffset: true,
 };
 
-export const getPaginationString = (
+export const createPaginationString = (
     pagination: PaginateDataType,
     loading?: boolean,
     pageString?: string,
 ) => {
-    console.log(pagination);
     const loadingString = 'Loading results';
     pagination = {
         ...defaultPagination,
@@ -49,10 +48,10 @@ export const getPaginationString = (
     return loading ? loadingString : paginationString;
 };
 
-const ResultString: FC<ResultStringProps> = ({ pagination, loading, pageString }) => {
+const ResultString: FC<ResultStringInterface> = ({ pagination, loading, pageString }) => {
     return (
         <div>
-            <Typography.Text>{getPaginationString(pagination, loading, pageString)}</Typography.Text>
+            <Typography.Text>{createPaginationString(pagination, loading, pageString)}</Typography.Text>
         </div>
     );
 };

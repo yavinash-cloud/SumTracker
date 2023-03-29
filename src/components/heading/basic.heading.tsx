@@ -4,7 +4,7 @@ import { CSSProperties, FC, ReactNode } from 'react';
 const { useToken } = theme;
 
 
-interface HeadingProps {
+interface HeadingInterface {
     children: ReactNode;
     wrapperStyle?: CSSProperties;
     titleStyle?: CSSProperties;
@@ -13,7 +13,7 @@ interface HeadingProps {
     warapperClassName?: string;
 }
 
-const Heading: FC<HeadingProps> = ({
+const Heading: FC<HeadingInterface> = ({
     children,
     wrapperStyle = {},
     titleStyle = {},
