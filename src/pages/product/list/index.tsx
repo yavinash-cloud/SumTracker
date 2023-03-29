@@ -46,6 +46,14 @@ const ProductList: FC = () => {
             console.log(err);
         }
     }
+
+    const handleNext = () => {
+
+    }
+
+    const handlePrev = () => {
+
+    }
     return (
         <>
             <div style={{ marginBottom: '1rem' }}>
@@ -63,6 +71,10 @@ const ProductList: FC = () => {
             >
                 <div style={{ marginBottom: '1rem' }}>
                     <Pagination
+                        next={pagination.next}
+                        prev={pagination.prev}
+                        onNextClick={handleNext}
+                        onPrevClick={handlePrev}
                     />
                 </div>
                 <div style={{ marginBottom: '1rem' }}>
@@ -72,6 +84,8 @@ const ProductList: FC = () => {
                 </div>
                 <div>
                     <Pagination
+                        next={pagination.next}
+                        prev={pagination.prev}
                     />
                 </div>
             </div>

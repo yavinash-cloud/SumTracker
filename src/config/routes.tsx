@@ -11,7 +11,7 @@ const router = createBrowserRouter([
       element: <ProductList />,
 
       // when the URL matches this segment
-      path: '/',
+      path: '/products/',
     },]
   },
 
