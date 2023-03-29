@@ -3,6 +3,7 @@
 
 import { Image, Typography } from 'antd';
 import { FC } from 'react';
+import FallBackImage from '../../assests/images/fallback.png'
 
 
 type SizeType = 'md' | 'lg' | 'xl' | 'xxxl';
@@ -40,7 +41,7 @@ const Product: FC<ProductInterface> = ({ block = false, wrap = true, align = 'ce
                     rootClassName={`thumbnail-frame thumbnail-frame-default-${fallBackSize} ${'thumbnail-frame-' + size}`}
                     className={`${imageFit} w-auto`}
                     src={src}
-                    fallback={'/images/fallback.png'}
+                    fallback={FallBackImage}
                     preview={preview}
                 />
             </div>)}
